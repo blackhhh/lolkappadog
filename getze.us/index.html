@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	
+<!-- Mirrored from getze.us/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Jul 2018 08:26:23 GMT -->
+<head>
+		<title>Eagle Software - getze.us</title>
+		<link rel="stylesheet" type="text/css" href="../cdn.jsdelivr.net/jquery.slick/1.8.0/slick.css"/>
+		
+		<script type="text/javascript" src="../cdn.jsdelivr.net/jquery.slick/1.8.0/slick.min.js"></script>
+		<script src="../ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<style>
+			@media screen and (max-width: 979px) {
+				.buttons {
+					margin-top:-100px;
+				}
+				
+				#carousel div img {
+					width: 400px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title-section">
+			<img class="header-logo" src="img/logo-large.png" /><br>
+			<h1 class="title">Eagle Software</h1>
+			<!--<h2 class="home-button" style="background-color: #000000;">Coming soon</h2>-->
+			<a href="forum/index.html" rel="" tabindex="0" class="home-button">Become a member today!</a>
+			<br>
+			
+			<div id="carousel">
+				<div class="hideLeft">
+					<img src="../i.imgur.com/0ndyydh.jpg">
+				</div>
+				
+				<div class="hideLeft">
+					<img src="../i.imgur.com/ggMaZFS.jpg">
+				</div>
+				
+				<div class="hideLeft">
+					<img src="../i.imgur.com/IR97EOj.jpg">
+				</div>
+
+				<div class="prevLeftSecond">
+					<img src="../i.imgur.com/uyMCxkN.jpg">
+				</div>
+
+				<div class="prev">
+					<img src="../i.imgur.com/iCmheJW.jpg">
+				</div>
+
+				<div class="selected">
+					<img src="../i.imgur.com/cISDFqh.jpg">
+				</div>
+
+				<div class="next">
+					<img src="../i.imgur.com/Mm24ymd.jpg">
+				</div>
+
+				<div class="nextRightSecond">
+					<img src="../i.imgur.com/BhWATKe.jpg">
+				</div>
+
+				<div class="hideRight">
+					<img src="../i.imgur.com/Zu1aGFO.jpg">
+				</div>
+				
+				<div class="hideRight">
+					<img src="../i.imgur.com/4N0Wl41.jpg">
+				</div>
+				
+				<div class="hideRight">
+					<img src="../i.imgur.com/gUik1VU.jpg">
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="buttons">
+		
+			<button class="button" id="prev"><img style="height:32px;" src="img/back.png" /></button>
+			<button class="button" id="next"><img style="height:32px;" src="img/next.png" /></button>
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+	</body>
+	
+	<script>
+	function moveToSelected(element) {
+
+	  if (element == "next") {
+		var selected = $(".selected").next();
+	  } else if (element == "prev") {
+		var selected = $(".selected").prev();
+	  } else {
+		var selected = element;
+	  }
+
+	  var next = $(selected).next();
+	  var prev = $(selected).prev();
+	  var prevSecond = $(prev).prev();
+	  var nextSecond = $(next).next();
+
+	  $(selected).removeClass().addClass("selected");
+
+	  $(prev).removeClass().addClass("prev");
+	  $(next).removeClass().addClass("next");
+
+	  $(nextSecond).removeClass().addClass("nextRightSecond");
+	  $(prevSecond).removeClass().addClass("prevLeftSecond");
+
+	  $(nextSecond).nextAll().removeClass().addClass('hideRight');
+	  $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+
+	}
+
+	// Eventos teclado
+	$(document).keydown(function(e) {
+		switch(e.which) {
+			case 37: // left
+			moveToSelected('prev');
+			break;
+
+			case 39: // right
+			moveToSelected('next');
+			break;
+
+			default: return;
+		}
+		e.preventDefault();
+	});
+
+	$('#carousel div').click(function() {
+	  moveToSelected($(this));
+	});
+
+	$('#prev').click(function() {
+	  moveToSelected('prev');
+	});
+
+	$('#next').click(function() {
+	  moveToSelected('next');
+	});
+
+	</script>
+
+<!-- Mirrored from getze.us/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Jul 2018 08:26:38 GMT -->
+</html>
